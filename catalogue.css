@@ -1,0 +1,289 @@
+/* Reset */
+:root {
+    --container-padding: 1.6em;
+    --container-width: 1260px;
+  }
+  
+  * {
+    &,
+    &::before,
+    &::after {
+      box-sizing: border-box;
+    }
+  }
+  
+  body {
+    margin: 0;
+    font: 1em/160% sans-serif;
+  }
+  
+  img {
+    max-width: 100%;
+    vertical-align: middle;
+    height: auto;
+  }
+  
+  .page-container {
+    padding: var(--container-padding);
+    max-width: var(--container-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  /* Gallery layout */
+  :root {
+    --gallery-gap: 1.5em;
+    --gallery-items-per-row: 1;
+  }
+  
+  .img-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gallery-gap);
+  }
+  
+  /* 
+   * Width of each item = Wi
+   * Container width = Wc
+   * Gap between items = g
+   * Items per row in the gallery = n
+   * Total space coverd by gaps = G
+   * Available space for items per row = Wa
+   *
+   * G = g * (n - 1)
+   * Wa = Wc - G
+   * Wi = Wa / n
+   */
+  .img-gallery__item {
+    flex: 0 0
+      calc(
+        (100% - (var(--gallery-gap) * (var(--gallery-items-per-row) - 1))) /
+          var(--gallery-items-per-row)
+      );
+  
+    img {
+      border-radius: var(--gallery-item-border-radius);
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+    }
+  }
+  
+  @media only screen and (width >= 1024px) {
+    .img-gallery {
+      --gallery-items-per-row: 4;
+    }
+  }
+  
+  @media only screen and (768px < width < 1024px) {
+    .img-gallery {
+      --gallery-items-per-row: 3;
+    }
+  }
+  
+  @media only screen and (540px < width < 768px) {
+    .img-gallery {
+      --gallery-items-per-row: 2;
+    }
+  }
+  
+  /* Gallery styles */
+  :root {
+    --gallery-item-border-radius: 0.4em;
+  }
+  
+  .img-gallery__item {
+    figure {
+      margin: 0;
+    }
+  
+    figcaption {
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+  
+    img {
+      border-radius: var(--gallery-item-border-radius);
+    }
+  }
+  :root {
+    --navbar-bg-color:rgb(214, 160, 43);
+    --navbar-text-color: hsl(0, 0%, 0%);
+    --navbar-text-color-focus: white;
+    --navbar-bg-contrast: hsl(0, 0%, 25%);
+    --navbar-textfont-size: 80%;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  .container {
+    max-width: 1050px;
+    width: 90%;
+    margin: auto;
+  }
+  
+  .navbar {
+    width: 100%;
+    box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+    background-color: black;
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+  }
+  
+  .navbar .menu-items {
+    display: flex;
+    background-color: black;
+  }
+  
+  .navbar .nav-container li {
+    list-style: none;
+    
+  }
+  
+  .navbar .nav-container a {
+    text-decoration: none;
+    color: rgb(214, 160, 43);
+    font-weight: 500;
+    font-size: 1.9rem;
+    padding: 0.7rem;
+  }
+  
+  .navbar .nav-container a:hover{
+      font-weight: bolder;
+      
+  }
+  
+  .nav-container {
+    display: block;
+    position: relative;
+    height: 60px;
+  }
+  
+  .nav-container .checkbox {
+    position: absolute;
+    display: block;
+    height: 32px;
+    width: 32px;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .nav-container .hamburger-lines {
+    display: block;
+    height: 26px;
+    width: 32px;
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .nav-container .hamburger-lines .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: rgb(214, 160, 43);
+  }
+  
+  .nav-container .hamburger-lines .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .nav-container .hamburger-lines .line2 {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .nav-container .hamburger-lines .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .navbar .menu-items {
+    padding-top: 120px;
+    box-shadow: inset 0 0 2000px ;
+    height: 100vh;
+    width: 100%;
+    transform: translate(-150%);
+    display: flex;
+    flex-direction: column;
+    margin-left: -40px;
+    padding-left: 50px;
+    transition: transform 0.5s ease-in-out;
+    text-align: center;
+  }
+  
+  .navbar .menu-items li {
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .logo {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 1.2rem;
+    color: rgb(214, 160, 43);
+  }
+  
+  .nav-container input[type="checkbox"]:checked ~ .menu-items {
+    transform: translateX(0);
+  }
+  
+  .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+    transform: rotate(45deg);
+  }
+  
+  .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+    transform: scaleY(0);
+  }
+  
+  .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+    transform: rotate(-45deg);
+  }
+  
+  .nav-container input[type="checkbox"]:checked ~ .logo{
+    display: none;
+  }
+  
+
+  
+
+  
+  
+  body { 
+    background-color: #292a2b;
+   }
+   img {
+    width: 100%;
+    height: auto;
+    border-radius: 100%
+}
+.button{
+  color:rgb(214, 160, 43) ;
+  
+}
+@media  and {
+  
+}
